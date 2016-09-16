@@ -1,0 +1,42 @@
+<head>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link href="/vendormentis/metisMenu.min.css" rel="stylesheet">
+  <link href="/vendordistcss/sb-admin-2.css" rel="stylesheet">
+  <link href="/vendormorrisjs/morris.css" rel="stylesheet">
+  <link href="/vendorfont/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <script href="/vendorraph/raphael.min.js" rel="stylesheet" type="text/css"></script>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <br>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="/createjob">Create a new Job</a></li>
+        <li><a href="/createworkunit">Create a new Work Unit</a></li>
+        <li><a href="/createjob">Structural Mapping</a></li>
+        <li><a href="/searchjobs/search">Search Jobs</a></li>
+        <li><a href="/test">Test</a></li>
+      </ul><br>
+    </div>
+    <div class="col-sm-7" style="padding-left: 5%;">
+      <h2>Created Jobs:</h2><br>
+      <div class="chat-body clearfix">
+        <div class="header">
+          <%for(i = 0; i< data.length; i++){%>
+          <strong class="primary-font"><%= data[i].job_name%></strong>
+          <small class="pull-right text-muted">
+            <i class="fa fa-clock-o fa-fw"></i> <%= data[i].date_created %>
+          </small>
+        </div>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
