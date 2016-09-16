@@ -1,0 +1,129 @@
+<head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/eonasdancss/bootstrap-datetimepicker.min.css" />
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/moment/moment.min.js"></script>
+  <script src="/eonasdan/bootstrap-datetimepicker.min.js"></script>
+</head>
+<body>
+<div class="jumbotron col-md-8 col-md-offset-2 center">
+  <form class="form-horizontal" action="/createjob" method="post" enctype="application/x-www-form-urlencoded">
+
+      <!---Client Name---->
+      <div class="form-group">
+        <label for="name" class="col-sm-4 control-label">Client Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" id="clientname" name="clientname" placeholder="Client Name" value="">
+        </div>
+      </div>
+
+      <!---Select Job Dropdown---->
+      <div class="form-group">
+        <div class="dropdown col-md-offset-6">
+          <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Select Job
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!---Survey Type---->
+      <div class="form-group">
+        <label for="email" class="col-sm-4 control-label">Survey Type</label>
+        <div class="col-sm-7">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dLabel" role="button" data-toggle="dropdown">Select
+              <span class="caret"></span></button>
+            <ul id="drpdn_List" runat="server" class="dropdown-menu" role="menu" aria-labelledby="dropdownmenu">
+              <li><a href="#">For-profit</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Non-for-profit</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!---Census Start Date---->
+      <div class="form-group">
+        <label for="message" class="col-sm-4 control-label" id="census_start" name="census_start">Census Start Date</label>
+        <div class='input-group date col-sm-5' id='datetimepicker'>
+          <input type='text' class="form-control" name="census_start" value=""/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+
+      <!---Census End Date---->
+      <div class="form-group">
+        <label for="message" class="col-sm-4 control-label" id="census_end" name="census_end">Census End Date</label>
+        <div class='input-group date col-sm-5' id='datepicker'>
+          <input type='text' class="form-control" name="census_end" value=""/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+
+      <!---Report Delivery Date---->
+      <div class="form-group">
+        <label for="message" class="col-sm-4 control-label" id="report_date" name="report_date">Report Delivery Date</label>
+        <div class='input-group date col-sm-5' id='datepick'>
+          <input type='text' class="form-control" name="report_delivery_date" value=""/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+
+      <!---Sunbmit and Go Back buttons---->
+      <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-4">
+          <input id="submit" name="submit" type="submit" value="Create" class="btn btn-primary"/>
+          <input type="button" value="Back" onclick="location.href='/'" class="btn btn-danger" />
+        </div>
+      </div>
+  </form>
+    <script type="text/javascript">
+
+      //Date Picker Function
+      $(function () {
+        $('#datetimepicker').datetimepicker();
+        $('#datepicker').datetimepicker({
+          useCurrent: false
+        });
+        $('#datepick').datetimepicker({
+          useCurrent: false
+        });
+        $('#datepick').datetimepicker({
+          useCurrent: false
+        });
+
+        $("#datetimepicker").on("dp.change", function (e) {
+          $('#datepicker').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datepicker").on("dp.change", function (e) {
+          $('#datetimepicker').data("DateTimePicker").maxDate(e.date);
+        });
+
+        $("#datepicker").on("dp.change", function (e) {
+          $('#datepick').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datepick").on("dp.change", function (e) {
+          $('#datepicker').data("DateTimePicker").maxDate(e.date);
+        });
+
+      });
+
+      //Change text on select (dropdown)
+      $(document).on('click', '.dropdown-menu li a', function () {
+        selText = $(this).text();
+        $('#dLabel').html(selText + '<span class="caret"</span>');
+      });
+    </script>
+</div>
+</body>

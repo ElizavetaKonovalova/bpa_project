@@ -26,7 +26,8 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/search', function (req, res, next) {
-    res.render('searchjobs', {data:null});
+    console.log(req.body);
+    //res.render('searchjobs', {data:req.body});
 });
 
 router.post('/search', function (req, res, next) {

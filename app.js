@@ -13,7 +13,6 @@ var dashboard = require('./routes/dashboard');
 var jobs = require('./routes/jobs');
 var work_units = require('./routes/work_units');
 var db = require('./routes/models/database');
-var test = require('./routes/test');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +31,6 @@ app.use('/', dashboard);
 app.use('/createjob', jobs);
 app.use('/createworkunit', work_units);
 app.use('/searchjobs', jobs);
-app.use('/test', test);
 
 //Bootstrap and JQuery
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
@@ -55,6 +53,7 @@ app.use('/vendorjq', express.static(__dirname + '/vendor/jquery/'));
 app.use('/vendordist', express.static(__dirname + '/bower_components/startbootstrap-sb-admin-2-gh-pages/dist'));
 app.use('/vendordata', express.static(__dirname + '/bower_components/startbootstrap-sb-admin-2-gh-pages/data'));
 app.use('/vendorraph', express.static(__dirname + '/vendor/raphael'));
+app.use('/pubjs', express.static(__dirname + '/public/javascripts'));
 
 
 // catch 404 and forward to error handler

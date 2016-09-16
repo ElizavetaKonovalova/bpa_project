@@ -1,0 +1,39 @@
+<head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/eonasdancss/bootstrap-datetimepicker.min.css" />
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/moment/moment.min.js"></script>
+  <script src="/eonasdan/bootstrap-datetimepicker.min.js"></script>
+</head>
+<body>
+<div class="jumbotron col-md-8 col-md-offset-2 center">
+      <div class="col-sm-7">
+          <div class="chat-panel panel panel-default">
+              <div class="panel-heading">
+                  <i class="fa fa-comments fa-fw"></i> Jobs Created
+              </div>
+              <div class="panel-body">
+                  <ul class="chat">
+                      <%if (data != null){%>
+                      <%for(i = 0; i< data.length; i++){%>
+                      <li class="left clearfix">
+                          <div class="chat-body clearfix">
+                              <p>
+                                  Job Name: <%= data[i].job_name%>
+                                  <%= data[i].survey_type %>
+                                  <%= data[i].census_start_date %>
+                                  <%= data[i].census_end_date %>
+                                  <%= data[i].report_delivery_date %>
+                                  <%= data[i].presentation_date %>
+                              </p>
+                          </div>
+                      </li>
+                      <% };;;;;; %>
+                      <%}%>
+                  </ul>
+              </div>
+          </div>
+      </div>
+</div>
+</body>

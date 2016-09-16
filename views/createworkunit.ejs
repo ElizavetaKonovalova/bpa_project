@@ -1,0 +1,101 @@
+<head>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron col-md-8 col-md-offset-2 center">
+  <form class="form-horizontal" action="/createworkunit" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="form-group">
+      <label for="name" class="col-sm-4 control-label">Work Unit Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="wu_name" name="wu_name" placeholder="Type a work unit name here" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-4 control-label">Job Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="job_name" name="job_name" placeholder="Type a job name for which you are creating the work unit" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-4 control-label">Parent Work Unit</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="parent_wuid" name="parent_wuid" placeholder="What is the upper work unit?" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-4 control-label">Profit motive</label>
+      <div class="col-sm-6">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">For-profit</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Non-for-profit</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-4 control-label">Sector</label>
+      <div class="col-sm-6">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">Private</li>
+            <li><a href="#">Private</a></li>
+            <li><a href="#">Social Enterprises</a></li>
+            <li><a href="#">Cooperatives</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Public</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Community</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-4 control-label">Country</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="country" name="country" placeholder="Where is it located?" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-4 control-label">State</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="state" name="state" placeholder="What state is it in?" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-6 control-label">Tick this if it is located in a rural area: </label>
+      <div class="col-sm-4">
+        <div class="checkbox">
+          <label><input type="checkbox" id="rural" name="rural" data-on-text="Credit"></label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-4 control-label">Sub-Industry</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="subindustry" name="subindustry" placeholder="ex. Aged Care/Disability Services" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-4 control-label">Number of participants:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="participants_number" name="participants_number" placeholder="Denominator" value="">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-4">
+        <input id="submit" name="submit" type="submit" value="Create" class="btn btn-primary">
+        <input type="button" value="Back" onclick="location.href='/'" class="btn btn-danger" />
+      </div>
+    </div>
+  </form>
+</div>
+</body>

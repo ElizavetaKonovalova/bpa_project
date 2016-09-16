@@ -1,42 +1,115 @@
-<head>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link href="/vendormentis/metisMenu.min.css" rel="stylesheet">
-  <link href="/vendordistcss/sb-admin-2.css" rel="stylesheet">
-  <link href="/vendormorrisjs/morris.css" rel="stylesheet">
-  <link href="/vendorfont/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <script href="/vendorraph/raphael.min.js" rel="stylesheet" type="text/css"></script>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <br>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="/createjob">Create a new Job</a></li>
-        <li><a href="/createworkunit">Create a new Work Unit</a></li>
-        <li><a href="/createjob">Structural Mapping</a></li>
-        <li><a href="/searchjobs/search">Search Jobs</a></li>
-        <li><a href="/test">Test</a></li>
-      </ul><br>
-    </div>
-    <div class="col-sm-7" style="padding-left: 5%;">
-      <h2>Created Jobs:</h2><br>
-      <div class="chat-body clearfix">
-        <div class="header">
-          <%for(i = 0; i< data.length; i++){%>
-          <strong class="primary-font"><%= data[i].job_name%></strong>
-          <small class="pull-right text-muted">
-            <i class="fa fa-clock-o fa-fw"></i> <%= data[i].date_created %>
-          </small>
+<hmtl>
+    <head>
+
+        <!-----CSS stuff--->
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link href="/vendorcss/bootstrap.min.css" rel="stylesheet">
+        <link href="/vendormentis/metisMenu.min.css" rel="stylesheet">
+        <link href="/vendordist/css/sb-admin-2.css" rel="stylesheet">
+        <link href="/vendormorrisjs/morris.css" rel="stylesheet">
+        <link href="/vendorfont/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-----JS scripts--->
+        <script src="/vendorjq/jquery.min.js"></script>
+        <script src="/vendorjs/bootstrap.min.js"></script>
+        <script src="/vendorraph/raphael.min.js"></script>
+        <script src="/pubjs/html5shiv.js"></script>
+        <script src="/pubjs/respond.min.js"></script>
+        <script src="/vendormentis/metisMenu.min.js"></script>
+        <script src="/vendorraph/raphael.min.js"></script>
+        <script src="/vendormorrisjs/morris.min.js"></script>
+        <script src="/vendordata/morris-data.js"></script>
+        <script src="/vendordist/js/sb-admin-2.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 sidenav">
+                      <br>
+                      <ul class="nav nav-pills nav-stacked">
+                        <li><a href="/createjob">Create a new Job</a></li>
+                        <li><a href="/createworkunit">Create a new Work Unit</a></li>
+                        <li><a href="/createjob">Structural Mapping</a></li>
+                      </ul><br>
+                    </div>
+                <div class="col-sm-8" style="padding-left: 5%;">
+                  <div class="chat-panel panel panel-red">
+                      <div class="panel-heading">
+                          <i class="fa fa-angle-double-right fa-fw"></i> Jobs Created
+                      </div>
+                      <div class="panel-body">
+                          <ul class="chat">
+                              <%for(i = 0; i< data.length; i++){%>
+                              <li class="left clearfix">
+                                  <div class="chat-body clearfix">
+                                      <div class="header">
+                                          <small class="pull-right text-muted">
+                                              <i class="fa fa-clock-o fa-fw"></i> <%= moment(data[i].census_start_date).format('DD/MM/YYYY'); %>
+                                          </small>
+                                      </div>
+                                      <div class="col-sm-5">
+                                             <%= data[i].job_name%>
+                                      </div>
+                                  </div>
+                              </li>
+                              <%};;%>
+                          </ul>
+                      </div>
+                  </div>
+                  <form class="form-horizontal" action="/" method="post" enctype="application/x-www-form-urlencoded" style="margin-right: 40%;" id="myForm" name="myForm">
+                      <div class="form-group">
+                          <label for="name" class="col-sm-4 control-label">Job Name</label>
+                          <div class="col-sm-6">
+                              <input type="text" class="form-control" id="clientname" name="clientname" placeholder="Job Name" value="">
+                          </div>
+                          <div>
+                              <input id="submit" name="submit" type="submit" value="Find" class="btn btn-default"/>
+                          </div>
+                      </div>
+                  </form>
+                  <%if(modalData != null){%>
+                  <div class="panel panel-default">
+                      <%for(i = 0; i< modalData.length; i++){%>
+                      <div class="panel-body">
+                          <div class="panel-group" id="accordion">
+                              <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Job Name</a>
+                                      </h4>
+                                  </div>
+                                  <div id="collapseOne" class="panel-collapse collapse in">
+                                      <div class="panel-body">
+                                          <h4 style="padding-left: 2%;"><%= modalData[i].job_name%></h4>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Important Dates</a>
+                                      </h4>
+                                  </div>
+                                  <div id="collapseTwo" class="panel-collapse collapse">
+                                      <div class="panel-body">
+                                          <p><b>Census Start Date:</b> <%= moment(modalData[i].census_start_date).format('DD/MM/YYYY'); %></p>
+                                          <p><b>Census End Date:</b> <%= moment(modalData[i].census_end_date).format('DD/MM/YYYY'); %></p>
+                                          <p><b>Report Delivery Date:</b> <%= moment(modalData[i].report_delivery_date).format('DD/MM/YYYY'); %></p>
+                                          <%if (modalData[i].presentation_date = null){%>
+                                          <p><b>Presentation Date:</b> not chosen yet</p>
+                                          <%}else{%>
+                                          <p><b>Presentation Date:</b> <%= moment(modalData[i].report_delivery_date).format('DD/MM/YYYY'); %></p>
+                                          <%}%>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <%};;%>
+                  </div>
+                  <%}%>
+              </div>
+            </div>
         </div>
-        <%}%>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
+    </body>
+</hmtl>
